@@ -95,22 +95,7 @@ $rows = $Tags->resultset();
 </form>
 
 	<title>Blog</title>
- <h1>Posts</h1>
- <div>
- <?php foreach($rows as $row) : ?>
- 		<h3><?php echo $row['title']; ?></h3>
- 			<p><?php echo $row['post']; ?></p>
-			<p>Tags: <?php echo $row['tags']; ?></p>
- 			<br />
 
- 		<form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
- 			<input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
- 			<input type="submit" name="delete" value="Delete" />
-
- 		</form>
- 	</div>
- <?php endforeach; ?>
- </div>
 
 <body>
 
@@ -169,14 +154,29 @@ $rows = $Tags->resultset();
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            Man must explore, and this is exploration at its greatest
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Problems look mighty small from 150 miles up
-                        </h3>
-                    </a>
+
+											<h1>Posts</h1>
+											<div>
+											<?php foreach($rows as $row) : ?>
+												 <h3 class="post-title">><?php echo $row['title']; ?></h3>
+													 <p class="post-subtitle"><?php echo $row['post']; ?></p>
+													 <p>Tags: <?php echo $row['tags']; ?></p>
+													 <br />
+
+												 <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+													 <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
+													 <ul class='pager'>
+
+												<li>	 <input type='button' name="delete" value="Delete" /></li>
+
+												 </ul>
+
+												 </form>
+											 </div>
+											<?php endforeach; ?>
+											</div>
+
+
                     <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
                 </div>
                 <hr>
@@ -216,7 +216,6 @@ $rows = $Tags->resultset();
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="next">
-                        <a href="#">Older Posts &rarr;</a>
                     </li>
                 </ul>
             </div>
